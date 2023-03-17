@@ -3,11 +3,11 @@ from .models import Profile
 
 
 class ProfileSerializer(serializers.ModelSerializer):
-    user = serializers.ReadOnlyField(source='user.username')
+    user = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:
         model = Profile
         fields = [
-            'uuid','user','created_date','updated_date','bio',
-            'profile_picture'
+            'id','owner','created_date','updated_date','bio',
+            'image', 'user',
             ]

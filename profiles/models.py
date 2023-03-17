@@ -8,25 +8,26 @@ from django.utils import timezone
 
 class Profile(models.Model):
     """"Profile model to handle database logic"""
-    uuid = models.UUIDField(default=uuid.uuid4, editable=False)
+    owner = models.OneToOneField(User, on_delete=models.CASCADE)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
-    profile_picture = models.URLField(
-        null=True, blank=True, default="https://icons8.com/icon/sLFSAGKrdDPq/test-account")
+    image = models.ImageField(
+        upload_to='images/', default='../default_profile_bhadqa'
+    )
     bio = models.TextField(max_length=300, null=True, blank=True)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    
 
     class Meta:
         ordering = ['-created_date']
 
     def __str__(self):
         """Returns a string representation of model instance"""
-        return f"{self.user.username}'s profile"
+        return f"{self.owner}'s profile"
 
 
 def create_profile(sender, instance, created, **kwargs):
     if created:
-        Profile.objects.create(user=instance)
+        Profile.objects.create(owner=instance)
 
 
 post_save.connect(create_profile, sender=User)
