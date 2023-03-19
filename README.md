@@ -17,3 +17,34 @@
 | Retrieve Comment       | Perform GET request to /api/comments/:id/                         | Retrieve a specific comment by its ID             | Pass               |
 | Update Comment         | Perform PUT request to /api/comments/:id/ with updated data       | Update a specific comment by its ID               | Pass               |
 | Delete Comment         | Perform DELETE request to /api/comments/:id/                      | Delete a specific comment by its ID               | Pass               |
+
+# Detailed class  and api explanation bellow
+<details>
+
+# Models
+
+### The Post class is a Django model representing a post in the application. It has the following fields:
+
+## Post
+- owner: ForeignKey relation to the User model (author of the post).
+- created_at: DateTime field indicating when the post was created.
+- updated_at: DateTime field indicating the last time the post was updated.
+- title: CharField for the post's title.
+- content: TextField for the post's content (optional).
+- image: ImageField for the post's image (optional).
+- image_filter: CharField for the image filter to be applied (default is 'normal').
+
+## Profile
+- owner: OneToOneField relation to the User model.
+- created_at: DateTime field indicating when the profile was created.
+- updated_at: DateTime field indicating the last time the profile was updated.
+- name: CharField for the user's display name (optional).
+- content: TextField for the user's profile content (optional).
+- image: ImageField for the user's profile image.
+
+## Comment
+- owner: ForeignKey relation to the User model (author of the comment).
+- post: ForeignKey relation to the Post model (the post the comment is related to).
+- created_at: DateTime field indicating when the comment was created.
+- updated_at: DateTime field indicating the last time the comment was updated.
+- content: TextField for the comment's content.
