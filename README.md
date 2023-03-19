@@ -48,3 +48,23 @@
 - created_at: DateTime field indicating when the comment was created.
 - updated_at: DateTime field indicating the last time the comment was updated.
 - content: TextField for the comment's content.
+
+# Serializers
+## Post serializer :
+#### PostSerializer Class
+- Serializes the Post model.
+- Includes extra fields: owner (username), is_owner, profile_id, and profile_image.
+- Validates image size, height, and width.
+
+## Profile serializer :
+#### ProfileSerializer Class
+- Serializes the Profile model.
+- Includes extra fields: owner (username) and is_owner
+
+## Comments serializer :
+#### CommentSerializer Class
+- Serializes the Comment model.
+- Includes extra fields: owner (username), is_owner, profile_id, and profile_image.
+#### CommentDetailSerializer Class
+- Inherits from CommentSerializer.
+- Adds the post field (ID of the related post).
