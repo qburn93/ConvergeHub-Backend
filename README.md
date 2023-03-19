@@ -68,3 +68,30 @@
 #### CommentDetailSerializer Class
 - Inherits from CommentSerializer.
 - Adds the post field (ID of the related post).
+# Views
+## Posts views :
+#### PostList Class (APIView)
+- Handles the listing of all posts and the creation of new posts.
+- Serializer class: PostSerializer
+- Permission classes: IsAuthenticatedOrReadOnly
+#### PostDetail Class (APIView)
+- Handles the retrieval, updating, and deletion of a single post by its ID.
+- Serializer class: PostSerializer
+- Permission classes: IsOwnerOrReadOnly
+## Profiles App views :
+#### ProfileList Class (APIView)
+- Handles the listing of all user profiles.
+- No post method provided, as profile creation is handled by Django signals.
+#### ProfileDetail Class (APIView)
+- Handles the retrieval and updating of a single user profile by its ID.
+- Serializer class: ProfileSerializer
+- Permission classes: IsOwnerOrReadOnly
+## Comments views :
+#### CommentList Class (ListCreateAPIView)
+- Handles the listing of all comments and the creation of new comments.
+- Serializer class: CommentSerializer
+- Permission classes: IsAuthenticatedOrReadOnly
+#### CommentDetail Class (RetrieveUpdateDestroyAPIView)
+- Handles the retrieval, updating, and deletion of a single comment by its ID.
+- Serializer class: CommentDetailSerializer
+- Permission classes: IsOwnerOrReadOnly
