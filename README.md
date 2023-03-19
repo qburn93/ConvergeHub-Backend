@@ -95,3 +95,83 @@
 - Handles the retrieval, updating, and deletion of a single comment by its ID.
 - Serializer class: CommentDetailSerializer
 - Permission classes: IsOwnerOrReadOnly
+
+# API Endpoints details bellow
+
+
+# API Endpoints
+Below is the documentation for each app's API endpoints.
+
+## Posts App
+### GET /api/posts/
+- Description: List all posts.
+- Authentication: None (public access).
+- Method: GET
+- Response: List of serialized Post instances.
+### POST /api/posts/
+- Description: Create a new post.
+- Authentication: Token authentication required.
+- Method: POST
+- Payload: JSON object with title, content, image, and image_filter.
+- Response: Serialized Post instance of the created post.
+### GET /api/posts/:id/
+- Description: Retrieve a specific post by its ID.
+- Authentication: None (public access).
+- Method: GET
+- Response: Serialized Post instance.
+### PUT /api/posts/:id/
+- Description: Update a specific post by its ID.
+- Authentication: Token authentication required, and the user must be the owner of the post.
+- Method: PUT
+- Payload: JSON object with the fields to update.
+- Response: Serialized Post instance of the updated post.
+### DELETE /api/posts/:id/
+- Description: Delete a specific post by its ID.
+- Authentication: Token authentication required, and the user must be the owner of the post.
+- Method: DELETE
+- Response: HTTP status code 204 (No Content).
+# Profiles App
+### GET /api/profiles/
+- Description: List all user profiles.
+- Authentication: None (public access).
+- Method: GET
+- Response: List of serialized Profile instances.
+### GET /api/profiles/:id/
+- Description: Retrieve a specific user profile by its ID.
+- Authentication: None (public access).
+- Method: GET
+- Response: Serialized Profile instance.
+### PUT /api/profiles/:id/
+- Description: Update a specific user profile by its ID.
+- Authentication: Token authentication required, and the user must be the owner of the profile.
+- Method: PUT
+- Payload: JSON object with the fields to update.
+- Response: Serialized Profile instance of the updated profile.
+# Comments App
+### GET /api/comments/
+- Description: List all comments.
+- Authentication: None (public access).
+- Method: GET
+- Response: List of serialized Comment instances.
+### POST /api/comments/
+- Description: Create a new comment.
+- Authentication: Token authentication required.
+- Method: POST
+- Payload: JSON object with post (ID of the related post) and content.
+- Response: Serialized Comment instance of the created comment.
+### GET /api/comments/:id/
+- Description: Retrieve a specific comment by its ID.
+- Authentication: None (public access).
+- Method: GET
+- Response: Serialized Comment instance.
+### PUT /api/comments/:id/
+- Description: Update a specific comment by its ID.
+- Authentication: Token authentication required, and the user must be the owner of the comment.
+- Method: PUT
+- Payload: JSON object with the fields to update.
+- Response: Serialized Comment instance of the updated comment.
+### DELETE /api/comments/:id/
+- Description: Delete a specific comment by its ID.
+- Authentication: Token authentication required, and the user must be the owner of the comment.
+- Method: DELETE
+- Response: HTTP status code 204 (No Content).
