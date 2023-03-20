@@ -166,6 +166,24 @@ repository by using the following steps...
 - updated_at: DateTime field indicating the last time the comment was updated.
 - content: TextField for the comment's content.
 
+## Like
+The Like model represents a like on a post. It has the following fields:
+
+- owner: A foreign key reference to the user who liked the post.
+- post: A foreign key reference to the post that has been liked.
+- created_at: The timestamp when the like was created.
+- updated_at: The timestamp when the like was last updated.
+- content: The text content of the like (not required in this case, can be removed).
+The Meta class orders the Like model by the created_at timestamp in descending order and ensures that a user can like a post only once.
+
+## Follower
+The Follower model represents the relationship between two users where one user follows another user. It has the following fields:
+
+- owner: A foreign key reference to the user who follows another user.
+- followed: A foreign key reference to the user who is being followed.
+- created_at: The timestamp when the follow action was created.
+The Meta class orders the Follower model by the created_at timestamp in descending order and ensures that a user can follow another user only once.
+
 # Serializers
 ## Post serializer :
 #### PostSerializer Class
@@ -185,6 +203,20 @@ repository by using the following steps...
 #### CommentDetailSerializer Class
 - Inherits from CommentSerializer.
 - Adds the post field (ID of the related post).
+
+### LikeSerializer
+#### The LikeSerializer is a serializer for the Like model. It has the following fields:
+
+- owner: The username of the user who liked the post (read-only).
+- id, created_at, and post: Fields from the Like model.
+### FollowerSerializer
+#### The FollowerSerializer is a serializer for the Follower model. It has the following fields:
+
+- owner: The username of the user who follows another user (read-only).
+- followed_name: The username of the user being followed (read-only).
+- id, created_at, and followed: Fields from the Follower model.
+The create method handles the creation of a new follower relationship and raises a validation error if there is a duplicate relationship.
+
 # Views
 ## Posts views :
 #### PostList Class (APIView)
@@ -212,6 +244,13 @@ repository by using the following steps...
 - Handles the retrieval, updating, and deletion of a single comment by its ID.
 - Serializer class: CommentDetailSerializer
 - Permission classes: IsOwnerOrReadOnly
+
+## LikeList and LikeDetail
+#### The LikeList view allows users to list all likes or create a like if they are authenticated. The LikeDetail view allows users to retrieve or delete a like if they are the owner.
+
+## FollowerList and FollowerDetail
+#### The FollowerList view allows users to list all followers or create a follower (follow a user) if they are authenticated if they are authenticated. The FollowerDetail view allows users to retrieve or delete a follower (unfollow a user) if they are the owner.
+
 
 # API Endpoints details bellow
 
