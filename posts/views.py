@@ -3,8 +3,13 @@ from rest_framework import generics, permissions, filters
 from django_filters.rest_framework import DjangoFilterBackend
 from convergehub_api.permissions import IsOwnerOrReadOnly
 from .models import Post
-from .serializers import PostSerializer
+from categories.models import Category
+from .serializers import PostSerializer, CategorySerializer
 
+
+class CategoryList(generics.ListCreateAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
 
 
 class PostList(generics.ListCreateAPIView):
@@ -40,7 +45,13 @@ class PostList(generics.ListCreateAPIView):
     ]
 
     def perform_create(self, serializer):
+        category = get_object_or_404(Category, id=self.request.data.get('category'))
+        serializer.save(category=category)
         serializer.save(owner=self.request.user)
+
+    def perform_update(self, serializer):
+        category = get_object_or_404(Category, id=self.request.data.get('category'))
+        serializer.save(category=category)
 
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):

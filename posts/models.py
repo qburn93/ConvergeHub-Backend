@@ -1,6 +1,20 @@
 from django.db import models
 from django.contrib.auth.models import User
+from categories.models import Category
 
+def get_default_category():
+    categories = [
+        {'name': 'Uncategorized', 'slug': 'uncategorized'},
+        {'name': 'Fun', 'slug': 'fun'},
+        {'name': 'Inspirational', 'slug': 'inspirational'},
+        {'name': 'Adventure', 'slug': 'adventure'},
+    ]
+
+    for category in categories:
+        Category.objects.get_or_create(name=category['name'], slug=category['slug'])
+
+    default_category, created = Category.objects.get_or_create(name='Uncategorized', slug='uncategorized')
+    return default_category.id
 
 class Post(models.Model):
     """
@@ -28,6 +42,8 @@ class Post(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=255)
     content = models.TextField(blank=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, default=get_default_category)
+    
     image = models.ImageField(
         upload_to='images/', default='../default_post_tjnjpe', blank=True
     )
