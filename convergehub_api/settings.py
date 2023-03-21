@@ -61,7 +61,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEV' in os.environ
 
-ALLOWED_HOSTS = ['localhost', 'convergehub-backend.herokuapp.com']
+ALLOWED_HOSTS = ['localhost',  'converhub-backend.herokuapp.com']
 
 
 # Application definition
