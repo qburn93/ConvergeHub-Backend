@@ -45,9 +45,9 @@ class PostList(generics.ListCreateAPIView):
     ]
 
     def perform_create(self, serializer):
-        category = get_object_or_404(Category, id=self.request.data.get('category'))
-        serializer.save(category=category)
-        serializer.save(owner=self.request.user)
+        category_id = self.request.data.get('category')
+        category = get_object_or_404(Category, id=category_id)
+        serializer.save(owner=self.request.user, category=category)
 
     def perform_update(self, serializer):
         category = get_object_or_404(Category, id=self.request.data.get('category'))
