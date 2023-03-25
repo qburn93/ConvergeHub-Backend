@@ -62,7 +62,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEV' in os.environ
 
-ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOST'), 'localhost', 'converhub-backend.herokuapp.com','*.gitpod.io']
+ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOST'), 'localhost', 'converhub-backend.herokuapp.com']
 
 
 # Application definition
@@ -92,7 +92,7 @@ INSTALLED_APPS = [
     'comments',
     'likes',
     'followers',
-    'categories',
+    
 ]
 SITE_ID = 1
 MIDDLEWARE = [
@@ -106,22 +106,22 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# if 'CLIENT_ORIGIN' in os.environ:
-#     CORS_ALLOWED_ORIGINS = [
-#         os.environ.get('CLIENT_ORIGIN'),
-#     ]
+if 'CLIENT_ORIGIN' in os.environ:
+        CORS_ALLOWED_ORIGINS = [
+        os.environ.get('CLIENT_ORIGIN'),
+    ]
 
 
-# if 'CLIENT_ORIGIN_DEV' in os.environ:
-#     extracted_url = re.match(
-#         r'^.+-', os.environ.get(
-#             'CLIENT_ORIGIN_DEV', ''
-#             ), re.IGNORECASE
-#         ).group(0)
+if 'CLIENT_ORIGIN_DEV' in os.environ:
+    extracted_url = re.match(
+        r'^.+-', os.environ.get(
+            'CLIENT_ORIGIN_DEV', ''
+            ), re.IGNORECASE
+        ).group(0)
 
-#     CORS_ALLOWED_ORIGIN_REGEXES = [
-#         rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
-#     ]
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
+    ]
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 
