@@ -22,8 +22,8 @@ class PostList(generics.GenericAPIView):
     The perform_create method associates the post with the logged in user.
     """
     serializer_class = PostSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    # permission_classes = [AllowAny]
+    # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [AllowAny]
 
     queryset = Post.objects.annotate(
         likes_count=Count('likes', distinct=True),
