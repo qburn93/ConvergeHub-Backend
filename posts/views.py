@@ -23,7 +23,7 @@ class PostList(generics.GenericAPIView):
     """
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    permission_classes = [AllowAny]
+    # permission_classes = [AllowAny]
 
     queryset = Post.objects.annotate(
         likes_count=Count('likes', distinct=True),
@@ -60,10 +60,13 @@ class PostList(generics.GenericAPIView):
     
         try:
             user=request.user
+
             title=request.data['title']
             image=request.data['image']
+
             content=request.data['content']
             category= request.data['category']
+
             category_id=Category.objects.get(slug=category)
             post=Post.objects.create(owner=user,title=title,content=content,category=category_id,image=image)
             post.save()
