@@ -1,16 +1,18 @@
 from django.db.models import Count
-from rest_framework import generics, permissions, filters
+from rest_framework import generics, permissions, filters,status
 from rest_framework.permissions import AllowAny
 from django_filters.rest_framework import DjangoFilterBackend
 from convergehub_api.permissions import IsOwnerOrReadOnly
 from .models import Post,Category
 from .serializers import PostSerializer
 from django.contrib.auth.models import User
-
+from rest_framework.response import Response
 
 class PostList(generics.GenericAPIView):
     serializer_class = PostSerializer
     permission_classes = [AllowAny]
+    queryset=Post.objects.all()
+
 
     def get(self,request):
         queryset=Post.objects.all()
