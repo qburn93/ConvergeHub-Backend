@@ -62,7 +62,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEV' in os.environ
 
-ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOST'), 'localhost', 'converhub-backend.herokuapp.com','https://3000-qburn93-convergehubfron-vo5y6with0y.ws-eu92.gitpod.io']
+ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOST'), 'localhost', 'converhub-backend.herokuapp.com','*.gitpod.io']
 
 
 # Application definition
