@@ -1,7 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
+class Category(models.Model):
+    name=models.CharField(max_length=50,null=True,blank=True)
+    description=models.TextField(null=True,blank=True)
+    def __str__(self):
+        return f'{self.name}'
+    
 class Post(models.Model):
     """
     Post model, related to 'owner', i.e. a User instance.
@@ -28,7 +33,7 @@ class Post(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=255)
     content = models.TextField(blank=True)
-    
+    category=models.ForeignKey(Category, on_delete=models.CASCADE,null=True)
     
     image = models.ImageField(
         upload_to='images/', default='../default_post_tjnjpe', blank=True
