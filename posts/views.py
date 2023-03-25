@@ -61,17 +61,20 @@ class PostList(generics.GenericAPIView):
         try:
             user=request.data['user']
             title=request.data['title']
+            content=request.data['content']
+
             if request.data['image']:
                 image=request.data['image']
+                post=Post.objects.create(owner=user,title=title,content=content,category=1,image=image)
+                post.save()
             else:
                 image=None
     
-            content=request.data['content']
             # category= request.data['category']
 
             # category_id=Category.objects.get(slug=category)
-            post=Post.objects.create(owner=user,title=title,content=content,category=1,image=image)
-            post.save()
+                post=Post.objects.create(owner=user,title=title,content=content,category=1)
+                post.save()
             return Response({'message': 'Successfully inserted the post to Database'}, status=status.HTTP_200_OK)
 
 
