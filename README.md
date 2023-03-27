@@ -132,26 +132,7 @@ repository by using the following steps...
 | Retrieve Comment       | Perform GET request to /api/comments/:id/                         | Retrieve a specific comment by its ID             | Pass               |
 | Update Comment         | Perform PUT request to /api/comments/:id/ with updated data       | Update a specific comment by its ID               | Pass               |
 | Delete Comment         | Perform DELETE request to /api/comments/:id/                      | Delete a specific comment by its ID               | Pass               |
-| List Posts         | Perform PUT request to /api/comments/:id/ with updated data   | Retrieve a list of all posts along with their categories  |        Pass         | 
-| Create Post         | Perform POST request to /api/posts/ with user,                       |  Create a new post with the specified category and return     |         |
-| with Category        | Perform DELETE request to /api/comments/:id/                        |  the created post                                                       | Pass               |
 
-<br>
-
-# Categories changes to PostList 
-## Changes made to the original code to add implementation for categories.
-
-#### Imports: Added necessary imports for working with categories and handling responses:
-- Updated: from .models import Post, Category
-- from django.contrib.auth.models import User
-- from rest_framework.response import Response
-- from rest_framework import status
-
-1. ``PostList`` class: Refactored the `PostList` class to inherit from `generics.GenericAPIView` instead of `generics.ListCreateAPIView`. 
-This allows us to define custom get and post methods.
-3. ``Permission classes``: Changed the permission class to ``AllowAny`` to let any user access the endpoint.
-4. ``get method``: Added a custom ``get`` method to handle GET requests. This method retrieves all ``Post`` instances from the database, serializes them using the ``PostSerializer``, and returns the serialized data as a response with a ``200 OK`` status.
-5. ``post method``: Added a custom ``post`` method to handle POST requests. This method extracts the necessary information from the request data (user, title, content, category, and image). It checks if the user and category exist in the database. If they do, it creates a new ``Post`` instance with the provided information, associates the post with the user as its owner and the specified category, saves the post, and returns a success message with a ``200 OK`` status. If the user or category is not found, it returns an appropriate error message with a ``400 BAD REQUEST`` status. If there's an issue while processing the request, it returns a general error message with a ``400 BAD REQUEST status``.
 
 # Detailed class  and api explanation bellow
 <details>
@@ -209,9 +190,7 @@ The Meta class orders the Follower model by the created_at timestamp in descendi
 - Includes extra fields: owner (username), is_owner, profile_id, and profile_image.
 - Validates image size, height, and width.
 
-### Updated Post Serielizer
 
-#### The updated version of the code introduces a new ``CategorySerializer``, which serializes the ``Category`` model. This serializer uses the ``Meta`` class to specify that all fields from the ``Category`` model should be serialized.The ``PostSerializer`` has been simplified significantly. The custom fields and validation methods have been removed. The serializer now focuses on serializing all fields of the ``Post`` model by using fields = "__all__" in the ``Meta`` class. The ``depth = 2`` option is added, which will cause the serializer to follow foreign key relationships (such as the ``Category`` foreign key in the ``Post`` model) up to a depth of 2 levels, serializing the related objects in the process.With these changes, the updated ``PostSerializer`` will include the details of the associated ``Category`` objects in the serialized output. Note that the custom fields and validation methods from the original serializer are no longer present, so if those features were necessary, you may need to reimplement them in the updated serializer.
 
 ## Profile serializer :
 #### ProfileSerializer Class
