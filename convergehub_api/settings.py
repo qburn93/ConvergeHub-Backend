@@ -52,9 +52,10 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEV' in os.environ
 
-ALLOWED_HOSTS = [os.environ.get(
-    'ALLOWED_HOST'), 'localhost', 'https://converhub-backend.herokuapp.com']
-
+ALLOWED_HOSTS = [
+    os.environ.get('ALLOWED_HOST'),
+    'localhost',
+]
 
 # Application definition
 
@@ -156,8 +157,8 @@ if 'DEV' in os.environ:
     }
 else:
     DATABASES = {
-    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-}
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
