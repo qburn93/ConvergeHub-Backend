@@ -119,6 +119,7 @@ if 'CLIENT_ORIGIN_DEV' in os.environ:
 Enable sending cookies in cross-origin requests
 so that users can get authentication functionality
 """
+CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 
 
