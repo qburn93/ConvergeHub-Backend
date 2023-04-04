@@ -54,7 +54,7 @@ DEBUG = 'DEV' in os.environ
 
 
 
-ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOST')]
+ALLOWED_HOSTS = ['converhub-backend.herokuapp.com']
 
 # Application definition
 
