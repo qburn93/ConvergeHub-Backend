@@ -54,7 +54,7 @@ DEBUG = 'DEV' in os.environ
 
 
 
-ALLOWED_HOSTS = ['converhub-backend.herokuapp.com']
+ALLOWED_HOSTS = ['converhub-backend.herokuapp.com', 'localhost']
 
 # Application definition
 
