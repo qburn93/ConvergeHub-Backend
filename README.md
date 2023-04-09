@@ -19,6 +19,35 @@ This project's backend API is built on the Django REST framework and serves the 
 
 <details>
 
+
+## Debugging Guide for ConvergeHub Repository
+In this debugging guide, I will discuss some of the issues encountered during the development of ConvergeHub, the solutions that were implemented, and the lessons learned along the way. This guide will cover topics such as CORS token issues, Heroku deployment challenges, ghost migrations, allowed hosts.
+
+## CORS Token Issues
+While working on the project, I faced issues related to Cross-Origin Resource Sharing (CORS) tokens. These problems hindered the communication between the frontend and the backend of the application. To resolve these issues, I had to:
+
+1. Configure the Django CORS middleware settings.
+2. Ensure that the frontend and backend applications had the correct CORS settings, allowing them to communicate seamlessly.
+
+## Heroku Deployment Challenges
+During the development process, I encountered difficulties deploying the application to Heroku. In the initial attempt, I made over 112 deployments while trying to debug and resolve issues. Eventually, i decided to delete the first Heroku app and start anew.
+
+In the second attempt, I made 24 new deployments but still faced issues that required further debugging. Ultimately, I had to delete the second app and create a third Heroku app, which has been the most stable deployment so far.
+
+## Ghost Migrations
+I experienced a persistent issue with ghost migrations that lasted for two weeks. This problem involved inconsistencies between the migrations in the repository and the actual database schema. To resolve these issues, I had to:
+
+1. Identify and remove the problematic migration files.
+2. Run the makemigrations command to generate new, correct migration files.
+3. Apply the new migrations using the migrate command.
+Throughout this process, it was crucial to ensure that the migration files were consistent with the database schema and the application's models.
+
+## Allowed Hosts and CORS Tokens
+I also encountered problems related to allowed hosts and CORS tokens, which required a significant amount of time and effort to resolve. With 10 hours of tutor support, I managed to fix these issues. I are grateful for the help provided by Joshua, Martin, and Niclas Tanskanen, who assisted in identifying and resolving these errors.
+
+## Conclusion
+This debugging guide provides an overview of some of the challenges faced during the development of ConvergeHub and the solutions that were implemented. It is essential to approach debugging systematically, using professional tools and techniques, and to seek help when necessary. By sharing our experiences, I hope to help others in their development journey and contribute to a more efficient debugging process.
+
 ## Testing
 
 ### Track Manual testing of the api
@@ -303,6 +332,7 @@ The Follower model represents the relationship between two users where one user 
 - Method: DELETE
 - Response: HTTP status code 204 (No Content).
 
+
 ## Deployment
 
 ### Forking the GitHub Repository
@@ -414,3 +444,7 @@ repository by using the following steps...
   - [Pillow](https://pypi.org/project/Pillow/9.2.0/) - Fork of PIL, the Python Imaging Library which provides image processing capabilities.
   - [psycopg2](https://pypi.org/project/psycopg2/2.9.3/) - Python PostgreSQL database adapter.
   - [python-dotenv](https://pypi.org/project/python-dotenv/0.21.0/) - Set key-value pairs from `.env` file as environmental variables.
+
+  <br>
+
+ 
