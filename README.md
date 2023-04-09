@@ -46,7 +46,7 @@ Throughout this process, it was crucial to ensure that the migration files were 
 I also encountered problems related to allowed hosts and CORS tokens, which required a significant amount of time and effort to resolve. With 10 hours of tutor support, I managed to fix these issues. I are grateful for the help provided by Joshua, Martin, and Niclas Tanskanen, who assisted in identifying and resolving these errors.
 
 ## Conclusion
-This debugging guide provides an overview of some of the challenges faced during the development of ConvergeHub and the solutions that were implemented. It is essential to approach debugging systematically, using professional tools and techniques, and to seek help when necessary. By sharing our experiences, I hope to help others in their development journey and contribute to a more efficient debugging process.
+This debugging guide provides an overview of some of the challenges faced during the development of ConvergeHub and the solutions that were implemented. It is essential to approach debugging systematically, and to seek help when necessary. By sharing my experiences, I hope to help others in their development journey and contribute to a more efficient debugging process.
 
 ## Testing
 
