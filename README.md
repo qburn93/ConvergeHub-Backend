@@ -24,6 +24,7 @@ This project's backend API is built on the Django REST framework and serves the 
 
 #### Current buggs:
 - There seems to be an issue with following and following after a certain time and im not sure what it's causing this since there was no errors anywhere for the following/unfollowing.This will be the first thing il look into as soon as im finished and have more time. Same for the superuser but if a new account is signed in and starts following accounts or unfollows it works, maybe it has something to do with the page load I just didnt have enough time to pinpoint.
+![CurrentBugg](https://i.imgur.com/00BOqiR.png)
 
 Other then that in this debugging guide, I will discuss some of the issues encountered during the development of ConvergeHub, the solutions that were implemented, and the lessons learned along the way. This guide will cover topics such as CORS token issues, Heroku deployment challenges, ghost migrations, allowed hosts.
 
