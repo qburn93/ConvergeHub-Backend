@@ -8,6 +8,9 @@ Users can register on the website to access more features, such as liking their 
 
 This project's backend API is built on the Django REST framework and serves the frontend by retrieving and storing data in the database.
 
+# Acknowledgement
+- I want to thank Code Institute for the guidance provided in setting up the core and structure of the project
+
 <br>
 
 # Database Schema
