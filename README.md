@@ -221,11 +221,11 @@ The Follower model represents the relationship between two users where one user 
 
 | App  | Action      | Authenticated     | Anonymous         | Passed             |
 | ---- | ----------- | ----------------- | ----------------- | ------------------ |
-| Cars | Read (List) | Array of all cars | Array of all cars | :white_check_mark: |
-| Cars | Read        | Returns Detail    | Returns Detail    | :white_check_mark: |
-| Cars | Create      | 201 Response      | N/A               | :white_check_mark: |
-| Cars | Update      | 200 Response      | N/A               | :white_check_mark: |
-| Cars | Delete      | 204 Response      | N/A               | :white_check_mark: |
+| Posts | Read (List) | Array of all lists| Array of all lists| :white_check_mark: |
+| Posts | Read        | Returns Detail    | Returns Detail    | :white_check_mark: |
+| Posts | Create      | 201 Response      | N/A               | :white_check_mark: |
+| Posts | Update      | 200 Response      | N/A               | :white_check_mark: |
+| Posts | Delete      | 204 Response      | N/A               | :white_check_mark: |
 
 ### Profiles app
 
