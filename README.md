@@ -252,13 +252,13 @@ The Follower model represents the relationship between two users where one user 
 
 | App  | Action                        | Authenticated          | Anonymous    | Passed             |
 | ---- | ----------------------------- | ---------------------- | ------------ | ------------------ |
-| Save | Read (List)                   | Array of owned objects | 403 Response | :white_check_mark: |
-| Save | Read - Valid ID and Owner     | Returns Detail         | 404 Response | :white_check_mark: |
-| Save | Read - Valid ID and not Owner | 404 Response           | 404 Response | :white_check_mark: |
-| Save | Read - Invalid ID             | 404 Response           | 404 Response | :white_check_mark: |
-| Save | Create                        | 201 Response           | N/A          | :white_check_mark: |
-| Save | Update                        | N/A                    | N/A          | N/A                |
-| Save | Delete                        | 204 Response           | N/A          | :white_check_mark: |
+| Like | Read (List)                   | Array of owned objects | 403 Response | :white_check_mark: |
+| Like | Read - Valid ID and Owner     | Returns Detail         | 404 Response | :white_check_mark: |
+| Like | Read - Valid ID and not Owner | 404 Response           | 404 Response | :white_check_mark: |
+| Like | Read - Invalid ID             | 404 Response           | 404 Response | :white_check_mark: |
+| Like | Create                        | 201 Response           | N/A          | :white_check_mark: |
+| Like | Update                        | N/A                    | N/A          | N/A                |
+| Like | Delete                        | 204 Response           | N/A          | :white_check_mark: |
 
 # API Endpoints details bellow
 
